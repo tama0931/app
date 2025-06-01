@@ -1,38 +1,152 @@
-.App {
-    text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Stats Card Components */
+.stats-card {
+  @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg rounded-2xl;
+  transition: all 0.3s ease;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+.stats-card:hover {
+  @apply transform translate-y-[-2px] shadow-xl;
 }
 
-.App-link {
-    color: #61dafb;
+.stats-card-total {
+  @apply bg-gradient-to-br from-purple-500 to-indigo-600;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.stats-card-completed {
+  @apply bg-gradient-to-br from-green-400 to-green-600;
+}
+
+.stats-card-pending {
+  @apply bg-gradient-to-br from-yellow-400 to-orange-500;
+}
+
+.stats-card-in-progress {
+  @apply bg-gradient-to-br from-blue-400 to-blue-600;
+}
+
+/* Navigation Styles */
+.nav-item {
+  @apply px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer;
+}
+
+.nav-item-active {
+  @apply bg-purple-500 text-white shadow-md;
+}
+
+.nav-item-inactive {
+  @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-purple-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple-400;
+}
+
+/* Form Elements */
+input:focus,
+textarea:focus,
+select:focus {
+  @apply ring-2 ring-purple-500 ring-opacity-50;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Button Hover Effects */
+button {
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Priority and Status Badges */
+.badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.badge-priority-high {
+  @apply bg-red-100 text-red-800;
+}
+
+.badge-priority-medium {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.badge-priority-low {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.badge-status-todo {
+  @apply bg-purple-100 text-purple-800;
+}
+
+.badge-status-progress {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.badge-status-done {
+  @apply bg-green-100 text-green-800;
+}
+
+/* Loading Spinner */
+.spinner {
+  @apply inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats-card {
+    @apply mx-2;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }
