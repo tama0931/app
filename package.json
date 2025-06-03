@@ -1,0 +1,9 @@
+{
+  "name": "notion-task-manager-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for Notion Task Manager",
+  "dependencies": {
+    "mongodb": "^6.0.0",
+    "@notionhq/client": "^2.2.15"
+  }
+}
